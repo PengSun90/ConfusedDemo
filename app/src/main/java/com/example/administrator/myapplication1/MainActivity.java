@@ -1,6 +1,5 @@
 package com.example.administrator.myapplication1;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,16 +25,16 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.dispatch_touch);
 
-        findViewById(R.id.aa).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_WEB_SEARCH);
-                startActivity(intent);
-            }
-        });
+//        findViewById(R.id.aa).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_WEB_SEARCH);
+//                startActivity(intent);
+//            }
+//        });
 
 //        findViewById(R.id.aa).setOnLongClickListener(this);
 //        InitViewPager();
