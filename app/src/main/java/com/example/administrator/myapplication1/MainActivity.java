@@ -1,5 +1,6 @@
 package com.example.administrator.myapplication1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import com.example.mylibrary.genericity.GenericityClassTest;
 import com.example.mylibrary.genericity.GenericityMethosClassTest;
+import com.example.mylibrary.startmodle.firstActivity;
 
 import java.util.ArrayList;
 
@@ -25,16 +27,17 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dispatch_touch);
+        setContentView(R.layout.activity_main);
 
-//        findViewById(R.id.aa).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
+        findViewById(R.id.aa).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, firstActivity.class);
 //                intent.setAction(Intent.ACTION_WEB_SEARCH);
-//                startActivity(intent);
-//            }
-//        });
+                startActivity(intent);
+            }
+        });
 
 //        findViewById(R.id.aa).setOnLongClickListener(this);
 //        InitViewPager();

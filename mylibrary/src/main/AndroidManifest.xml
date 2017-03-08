@@ -9,11 +9,15 @@
         <service
             android:name=".services.MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".services.MyService1"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".startmodle.firstActivity"></activity>
+        <activity android:name=".startmodle.secondActivity" />
+        <activity android:name=".startmodle.thirdActivity"></activity>
     </application>
 
 </manifest>
