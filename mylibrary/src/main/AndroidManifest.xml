@@ -16,10 +16,10 @@
             android:exported="true" />
 
         <activity
-            android:name=".startmodle.firstActivity"
+            android:name=".lanchModel.firstActivity"
             android:launchMode="singleInstance"></activity>
-        <activity android:name=".startmodle.secondActivity" />
-        <activity android:name=".startmodle.thirdActivity"></activity>
+        <activity android:name=".lanchModel.secondActivity" />
+        <activity android:name=".lanchModel.thirdActivity"></activity>
     </application>
 
 </manifest>

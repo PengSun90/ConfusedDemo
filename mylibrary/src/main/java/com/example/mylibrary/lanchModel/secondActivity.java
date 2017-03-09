@@ -1,4 +1,4 @@
-package com.example.mylibrary.startmodle;
+package com.example.mylibrary.lanchModel;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,18 +8,17 @@ import android.view.View;
 
 import com.example.mylibrary.R;
 
-public class firstActivity extends AppCompatActivity {
+public class secondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
-
-        findViewById(R.id.first).setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_second);
+        findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("tast", "firstActivity" + activityUtil.getTopActivity(firstActivity.this));
-                Intent i = new Intent(firstActivity.this, secondActivity.class);
+                Log.d("tast", "secondActivity" + activityUtil.getTopActivity(secondActivity.this));
+                Intent i = new Intent(secondActivity.this, thirdActivity.class);
                 startActivity(i);
             }
         });

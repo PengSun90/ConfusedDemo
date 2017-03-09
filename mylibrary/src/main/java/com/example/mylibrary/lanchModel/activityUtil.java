@@ -1,4 +1,4 @@
-package com.example.mylibrary.startmodle;
+package com.example.mylibrary.lanchModel;
 
 import android.app.ActivityManager;
 import android.content.Context;

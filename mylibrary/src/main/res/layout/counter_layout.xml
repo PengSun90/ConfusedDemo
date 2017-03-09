@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.example.mylibrary.wideget.CounterView
+    <com.example.mylibrary.widget.CounterView
         android:id="@+id/counter_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

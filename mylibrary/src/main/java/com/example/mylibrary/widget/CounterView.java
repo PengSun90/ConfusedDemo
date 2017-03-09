@@ -1,4 +1,4 @@
-package com.example.mylibrary.wideget;
+package com.example.mylibrary.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
