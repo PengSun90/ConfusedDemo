@@ -3,6 +3,7 @@ package com.example.mylibrary.startmodle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.example.mylibrary.R;
@@ -16,6 +17,7 @@ public class thirdActivity extends AppCompatActivity {
         findViewById(R.id.third).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("tast", "thirdActivity" + activityUtil.getTopActivity(thirdActivity.this));
                 Intent i = new Intent(thirdActivity.this, firstActivity.class);
                 startActivity(i);
             }

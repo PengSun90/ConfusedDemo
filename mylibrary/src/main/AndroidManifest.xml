@@ -15,7 +15,9 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".startmodle.firstActivity"></activity>
+        <activity
+            android:name=".startmodle.firstActivity"
+            android:launchMode="singleInstance"></activity>
         <activity android:name=".startmodle.secondActivity" />
         <activity android:name=".startmodle.thirdActivity"></activity>
     </application>
