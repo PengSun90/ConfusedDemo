@@ -1,18 +1,31 @@
-package com.example.administrator.myapplication1;
+package com.example.administrator.myapplication1.ui;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.example.administrator.myapplication1.R;
 import com.example.mylibrary.genericity.GenericityClassTest;
 import com.example.mylibrary.genericity.GenericityMethosClassTest;
+import com.example.office.http.callback.CommonCallback;
+import com.example.office.http.entity.HttpError;
+import com.example.office.http.HttpConstants;
+import com.example.office.util.HttpUtils;
+import com.example.office.util.Log.LogUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity implements View.OnLongClickListener {
+public class MainActivity extends FragmentActivity implements View.OnLongClickListener, View.OnClickListener {
+    private String className = MainActivity.class.getSimpleName();
     private ViewPager mPager;
     private ArrayList<Fragment> fragmentList;
     private int currIndex;//当前页卡编号
@@ -22,10 +35,20 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
     public GenericityClassTest<Integer> genericityClassTest = new GenericityClassTest<>();
     public GenericityMethosClassTest genericityTest1 = new GenericityMethosClassTest();
 
+
+    private EditText loginName;
+    private Button loginSubmitl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.counter_layout);
+        setContentView(R.layout.http_test);
+        initView();
+
+
+
+
+
+
 
 //        findViewById(R.id.aa).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -50,6 +73,50 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
 //        genericityClassTest.add(3);
 //        Integer a = genericityTest1.GenericityMethod(1);
     }
+
+    private void initView() {
+        loginName = (EditText)findViewById(R.id.login_name);
+        loginSubmitl = (Button)findViewById(R.id.login_submit);
+        initOnclick();
+    }
+
+    private void initOnclick() {
+        loginSubmitl.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.login_submit:
+                    submitLoginInfor();
+                    break;
+            }
+    }
+
+    private void submitLoginInfor() {
+        if(!TextUtils.isEmpty(loginName.getText().toString())){
+            String url = HttpConstants.getInstance().getLoginUrl(loginName.getText().toString(),loginName.getText().toString());
+            LogUtils.d(url);
+            HttpUtils.get(new WeakReference<Context>(this), url, HttpConstants.getRequestHeader(), new CommonCallback<String>() {
+                @Override
+                public void onFailure(Exception e) {
+                    LogUtils.d(e.getMessage());
+                }
+
+                @Override
+                public void onResponseError(int code, @Nullable HttpError httpError) {
+
+                    LogUtils.d(httpError.toString());
+                }
+
+                @Override
+                public void onResponseSuccess(int code, String response) {
+
+                }
+            });
+        }
+    }
+
 
     /*
      * 初始化ViewPager
@@ -76,6 +143,8 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
         Log.e("sp", "onLongClick");
         return false;
     }
+
+
 
 //    @Override
 //    protected void onSaveInstanceState(Bundle outState) {

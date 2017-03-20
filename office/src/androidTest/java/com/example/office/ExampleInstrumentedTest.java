@@ -1,4 +1,4 @@
-package com.example.administrator.myapplication1;
+package com.example.office;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the BaseApp under test.
+        // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.administrator.myapplication1", appContext.getPackageName());
+        assertEquals("com.example.office.test", appContext.getPackageName());
     }
 }
