@@ -15,11 +15,8 @@ import android.widget.EditText;
 import com.example.administrator.myapplication1.R;
 import com.example.mylibrary.genericity.GenericityClassTest;
 import com.example.mylibrary.genericity.GenericityMethosClassTest;
-import com.example.office.http.callback.CommonCallback;
-import com.example.office.http.entity.HttpError;
-import com.example.office.http.HttpConstants;
-import com.example.office.util.HttpUtils;
-import com.example.office.util.Log.LogUtils;
+import com.example.mylibrary.log.LogUtils;
+
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -42,7 +39,11 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.http_test);
-        initView();
+//        initView();
+        LogUtils.d("D");
+        LogUtils.i("I");
+        LogUtils.v("V");
+        LogUtils.e("e");
 
 
 
@@ -74,115 +75,125 @@ public class MainActivity extends FragmentActivity implements View.OnLongClickLi
 //        Integer a = genericityTest1.GenericityMethod(1);
     }
 
-    private void initView() {
-        loginName = (EditText)findViewById(R.id.login_name);
-        loginSubmitl = (Button)findViewById(R.id.login_submit);
-        initOnclick();
-    }
+    @Override
+    public void onClick(View view) {
 
-    private void initOnclick() {
-        loginSubmitl.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.login_submit:
-                    submitLoginInfor();
-                    break;
-            }
-    }
-
-    private void submitLoginInfor() {
-        if(!TextUtils.isEmpty(loginName.getText().toString())){
-            String url = HttpConstants.getInstance().getLoginUrl(loginName.getText().toString(),loginName.getText().toString());
-            LogUtils.d(url);
-            HttpUtils.get(new WeakReference<Context>(this), url, HttpConstants.getRequestHeader(), new CommonCallback<String>() {
-                @Override
-                public void onFailure(Exception e) {
-                    LogUtils.d(e.getMessage());
-                }
-
-                @Override
-                public void onResponseError(int code, @Nullable HttpError httpError) {
-
-                    LogUtils.d(httpError.toString());
-                }
-
-                @Override
-                public void onResponseSuccess(int code, String response) {
-
-                }
-            });
-        }
-    }
-
-
-    /*
-     * 初始化ViewPager
-     */
-    public void InitViewPager() {
-//        mPager = (ViewPager) findViewById(R.id.viewpager);
-//        fragmentList = new ArrayList<Fragment>();
-//        Fragment btFragment = new ButtonFragment();
-//        Fragment secondFragment = TestFragment.newInstance("this is second fragment");
-//        Fragment thirdFragment = TestFragment.newInstance("this is third fragment");
-//        Fragment fourthFragment = TestFragment.newInstance("this is fourth fragment");
-//        fragmentList.add(btFragment);
-//        fragmentList.add(secondFragment);
-//        fragmentList.add(thirdFragment);
-//        fragmentList.add(fourthFragment);
-        //给ViewPager设置适配器
-//        mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));
-//        mPager.setCurrentItem(0);//设置当前显示标签页为第一页
-//        mPager.setOnPageChangeListener(new MyOnPageChangeListener());
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        Log.e("sp", "onLongClick");
+    public boolean onLongClick(View view) {
         return false;
     }
-
-
-
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        outState.putBundle(ReportInfoUtils.REPORT_BUNDLE, saveState());
-//        super.onSaveInstanceState(outState);
+//
+//    private void initView() {
+//        loginName = (EditText)findViewById(R.id.login_name);
+//        loginSubmitl = (Button)findViewById(R.id.login_submit);
+//        initOnclick();
 //    }
 //
-//    // save report info like mood level, highlight text, highlight id, wish text, wish id, user defined text.
-//    private Bundle saveState() {
-//        Bundle map = new Bundle();
-//        map.putInt(ReportInfoUtils.CURRENT_ITEM, mCurIndex);
-//        return map;
+//    private void initOnclick() {
+//        loginSubmitl.setOnClickListener(this);
 //    }
 //
 //    @Override
-//    protected void onResume() {
-//        mPager.setCurrentItem(0);//设置当前显示标签页为第一页
-//        super.onResume();
+//    public void onClick(View v) {
+//            switch (v.getId()) {
+//                case R.id.login_submit:
+//                    submitLoginInfor();
+//                    break;
+//            }
 //    }
 //
-//    private class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+//    private void submitLoginInfor() {
+//        if(!TextUtils.isEmpty(loginName.getText().toString())){
+//            String url = HttpConstants.getInstance().getLoginUrl(loginName.getText().toString(),loginName.getText().toString());
+//            LogUtils.d(url);
+//            HttpUtils.get(new WeakReference<Context>(this), url, HttpConstants.getRequestHeader(), new CommonCallback<String>() {
+//                @Override
+//                public void onFailure(Exception e) {
+//                    LogUtils.d(e.getMessage());
+//                }
 //
-//        @Override
-//        public void onPageScrolled(int arg0, float arg1, int arg2) {
-//            // TODO Auto-generated method stub
+//                @Override
+//                public void onResponseError(int code, @Nullable HttpError httpError) {
 //
-//        }
+//                    LogUtils.d(httpError.toString());
+//                }
 //
-//        @Override
-//        public void onPageScrollStateChanged(int arg0) {
-//            // TODO Auto-generated method stub
+//                @Override
+//                public void onResponseSuccess(int code, String response) {
 //
-//        }
-//
-//        @Override
-//        public void onPageSelected(int arg0) {
-//            // TODO Auto-generated method stub
-//            mCurIndex = arg0;
+//                }
+//            });
 //        }
 //    }
+//
+//
+//    /*
+//     * 初始化ViewPager
+//     */
+//    public void InitViewPager() {
+////        mPager = (ViewPager) findViewById(R.id.viewpager);
+////        fragmentList = new ArrayList<Fragment>();
+////        Fragment btFragment = new ButtonFragment();
+////        Fragment secondFragment = TestFragment.newInstance("this is second fragment");
+////        Fragment thirdFragment = TestFragment.newInstance("this is third fragment");
+////        Fragment fourthFragment = TestFragment.newInstance("this is fourth fragment");
+////        fragmentList.add(btFragment);
+////        fragmentList.add(secondFragment);
+////        fragmentList.add(thirdFragment);
+////        fragmentList.add(fourthFragment);
+//        //给ViewPager设置适配器
+////        mPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));
+////        mPager.setCurrentItem(0);//设置当前显示标签页为第一页
+////        mPager.setOnPageChangeListener(new MyOnPageChangeListener());
+//    }
+//
+//    @Override
+//    public boolean onLongClick(View v) {
+//        Log.e("sp", "onLongClick");
+//        return false;
+//    }
+//
+//
+//
+////    @Override
+////    protected void onSaveInstanceState(Bundle outState) {
+////        outState.putBundle(ReportInfoUtils.REPORT_BUNDLE, saveState());
+////        super.onSaveInstanceState(outState);
+////    }
+////
+////    // save report info like mood level, highlight text, highlight id, wish text, wish id, user defined text.
+////    private Bundle saveState() {
+////        Bundle map = new Bundle();
+////        map.putInt(ReportInfoUtils.CURRENT_ITEM, mCurIndex);
+////        return map;
+////    }
+////
+////    @Override
+////    protected void onResume() {
+////        mPager.setCurrentItem(0);//设置当前显示标签页为第一页
+////        super.onResume();
+////    }
+////
+////    private class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+////
+////        @Override
+////        public void onPageScrolled(int arg0, float arg1, int arg2) {
+////            // TODO Auto-generated method stub
+////
+////        }
+////
+////        @Override
+////        public void onPageScrollStateChanged(int arg0) {
+////            // TODO Auto-generated method stub
+////
+////        }
+////
+////        @Override
+////        public void onPageSelected(int arg0) {
+////            // TODO Auto-generated method stub
+////            mCurIndex = arg0;
+////        }
+////    }
 }
